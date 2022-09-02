@@ -17,6 +17,7 @@
 package org.apache.commons.collections4.collection;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.assertj.core.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -1095,8 +1096,7 @@ public abstract class AbstractCollectionTest<E> extends AbstractObjectTest {
 
         array = getCollection().toArray(new Object[0]);
         a = getCollection().toArray();
-        assertEquals("toArrays should be equal",
-                     Arrays.asList(array), Arrays.asList(a));
+        assertThat(Arrays.asList(array)).hasSameElementsAs(Arrays.asList(a));
 
         // Figure out if they're all the same class
         // TODO: It'd be nicer to detect a common superclass
